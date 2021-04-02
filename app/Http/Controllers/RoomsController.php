@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
-use App\Models;
 
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
 
@@ -20,7 +20,8 @@ class RoomsController extends Controller
     }
 
     public function store(Request $request){
-        return Room::creat();
+        return Room::create($request->all());
+
     }
 
 
@@ -32,8 +33,14 @@ class RoomsController extends Controller
     }
 
     public function destroy($id){
-     return Room::deleted($id);
+     return Room::destroy($id);
     }
 
+    public function roomAvailable(){
+       return DB::table('rooms')
+            ->leftJoin('bookings', 'rooms.id', '=', 'bookings.room_id')
+            ->whereNull('bookings.room_id')
+            ->get();
+    }
 
 }

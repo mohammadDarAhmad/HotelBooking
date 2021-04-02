@@ -17,7 +17,9 @@ class BookingController extends Controller
 
 
     public function store(Request $request){
-        return Booking::creat($request->all());
+        return Booking::create($request->all());
+
+
     }
 
     public function update(Request $request,$id)
@@ -28,7 +30,7 @@ class BookingController extends Controller
     }
 
     public function destroy($id){
-        return Booking::deleted($id);
+        return Booking::destroy($id);
     }
 
 

@@ -27,12 +27,6 @@ Route::group(['prefix' => 'booking'], function () {
     Route::put('/{id}', [BookingController::class, 'update']);
     Route::delete('/{id}', [BookingController::class, 'destroy']);
 });
-Route::put('/blash',function(){
-
-$room = Room::find(1);
-$room->update(['name'=>'Ahmad']);
-return $room;
-});
 
 Route::group(['prefix' => 'rooms'], function () {
     Route::get('/', [RoomsController::class, 'index']);
@@ -40,4 +34,6 @@ Route::group(['prefix' => 'rooms'], function () {
     Route::post('/', [RoomsController::class, 'store']);
     Route::put('/{id}', [RoomsController::class, 'update']);
     Route::delete('/{id}', [RoomsController::class, 'destroy']);
+    Route::get('/roomAvailable', [RoomsController::class, 'roomAvailable']);
+
 });
