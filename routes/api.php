@@ -30,10 +30,10 @@ Route::group(['prefix' => 'booking'], function () {
 
 Route::group(['prefix' => 'rooms'], function () {
     Route::get('/', [RoomsController::class, 'index']);
+        Route::get('/roomAvailable', [RoomsController::class, 'roomAvailable']);
     Route::get('/{id}', [RoomsController::class, 'show']);
     Route::post('/', [RoomsController::class, 'store']);
     Route::put('/{id}', [RoomsController::class, 'update']);
     Route::delete('/{id}', [RoomsController::class, 'destroy']);
-    Route::get('/roomAvailable', [RoomsController::class, 'roomAvailable']);
 
 });

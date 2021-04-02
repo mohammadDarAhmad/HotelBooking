@@ -22,11 +22,12 @@ class BookingController extends Controller
 
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $booking= Booking::find($id);
-        $booking.$this->update($request->all());
-        return $booking();
+
+        $booking = Booking::find($id);
+        $booking->update($request->all());
+        return  $booking;
     }
 
     public function destroy($id){

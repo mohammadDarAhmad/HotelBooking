@@ -11,36 +11,41 @@ use Intervention\Image\Facades\Image;
 
 class RoomsController extends Controller
 {
-    public function index(){
-        return   Room::all();
+    public function index()
+    {
+        return Room::all();
     }
 
-    public function show($id){
+    public function show($id)
+    {
         return Room::find($id);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         return Room::create($request->all());
 
     }
 
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $room = Room::find($id);
         $room->update($request->all());
         return $room;
+
+    }
+
+    public function roomAvailable(){
+        return DB::table('rooms')
+            ->leftJoin('bookings', 'rooms.id', '=', 'bookings.room_id')
+            ->whereNull('bookings.room_id')
+            ->get();
     }
 
     public function destroy($id){
      return Room::destroy($id);
     }
 
-    public function roomAvailable(){
-       return DB::table('rooms')
-            ->leftJoin('bookings', 'rooms.id', '=', 'bookings.room_id')
-            ->whereNull('bookings.room_id')
-            ->get();
-    }
 
 }
