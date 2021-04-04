@@ -37,3 +37,7 @@ Route::group(['prefix' => 'rooms'], function () {
     Route::delete('/{id}', [RoomsController::class, 'destroy']);
 
 });
+
+Route::group(['middleware' => 'mobile.redirect'], function () {
+    Route::get('/rooms', [EmailController::class, 'index']);
+});
