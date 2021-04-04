@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,5 +36,11 @@ Route::group(['prefix' => 'rooms'], function () {
     Route::post('/', [RoomsController::class, 'store']);
     Route::put('/{id}', [RoomsController::class, 'update']);
     Route::delete('/{id}', [RoomsController::class, 'destroy']);
+
+});
+Route::group(['prefix' => 'user'], function () {
+
+    Route::post('/sendEmail', [UserController::class, 'send']);
+
 
 });
