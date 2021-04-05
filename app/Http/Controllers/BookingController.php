@@ -11,8 +11,8 @@ class BookingController extends Controller
         return Booking::all();
 
     }
-    public function show($id){
-        return Booking::find($id);
+    public function show(Booking $booking){
+        return $booking;
     }
 
 
@@ -22,16 +22,15 @@ class BookingController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Booking $booking)
     {
 
-        $booking = Booking::find($id);
         $booking->update($request->all());
         return  $booking;
     }
 
-    public function destroy($id){
-        return Booking::destroy($id);
+    public function destroy(Booking $booking){
+       return $booking->delete();
     }
 
 
