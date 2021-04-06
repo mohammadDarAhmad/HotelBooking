@@ -31,7 +31,7 @@ class BookingController extends Controller
         );
 
         if ($validator->fails()) {
-            return validation_response($validator->errors());
+            return $validator->errors();
         }
         return Booking::create($request->all());
     }
@@ -46,7 +46,7 @@ class BookingController extends Controller
         );
 
         if ($validator->fails()) {
-            return validation_response($validator->errors());
+            return $validator->errors();
         }
         $booking->update($request->all());
 
