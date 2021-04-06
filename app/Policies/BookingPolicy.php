@@ -20,12 +20,16 @@ class BookingPolicy
      */
     public function store(Booking $booking)
     {
-
+        if ($booking->user_id==1) {
+            return true;
+        }
         return false;
     }
     public function update(Booking $booking)
     {
-
+        if ($booking->user_id ==1 ) {
+            return true;
+        }
         return false;
     }
 }
