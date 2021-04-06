@@ -19,7 +19,9 @@ use App\Http\Controllers\RoomController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(['middleware' => 'mobile.redirect'], function () {
+    Route::get('rooms/rooms_available', [RoomController::class, 'roomAvailable']);
+});
 
-Route::get('rooms/rooms_available', [RoomController::class, 'roomAvailable']);
 Route::resource('rooms', RoomController::class);
 Route::resource('bookings', BookingController::class);
