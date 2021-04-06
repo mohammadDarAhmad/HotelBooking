@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,5 @@ Route::group(['middleware' => 'mobile.redirect'], function () {
 });
 
 Route::resource('rooms', RoomController::class);
+Route::get('users/send_email', [UserController::class, 'sendEmail']);
 Route::resource('bookings', BookingController::class);
