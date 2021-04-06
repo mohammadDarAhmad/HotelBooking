@@ -20,11 +20,12 @@ class Booking extends Model
     ];
 
     public function room(){
-        return $this->hasOne(Room::class);
+        return $this->belongsTo(Room::class);
 
     }
     public function user(){
-             return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
+
     }
 
 }
